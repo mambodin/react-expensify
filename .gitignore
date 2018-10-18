@@ -1,7 +1,4 @@
-public/bundle.js
-public/bundle.js.map
-public/styles.css
-public/styles.css.map
+dist/
 yarn-error.log
 node_modules/
 package-lock.json
