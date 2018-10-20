@@ -32,7 +32,7 @@ test('should add an expense ', () => {
         createdAt: 0
     }
 
-    const action ={
+    const action = {
         type:'ADD_EXPENSE',
         expense
     }
@@ -67,4 +67,20 @@ test('should not edit an expense when no ID', () => {
     const state = expensesReducer(expenses, action);
 
     expect(state).toEqual(expenses);
+});
+
+test('should set expenses', () => {
+
+    const action = {
+        type:'SET_EXPENSES',
+        expenses
+    };
+
+    const expenses2 = [{}];
+
+    let state = expensesReducer(expenses2, action);
+     state = expensesReducer(expenses, action);
+
+    expect(state).toEqual(expenses);
+
 });
