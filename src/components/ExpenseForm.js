@@ -68,42 +68,48 @@ export default class ExpenseForm extends React.Component {
 
     render() {
         return (
+            
+            
+        <form className="form" onSubmit={this.onSubmit}>
+            {this.state.error && <p className="form__error">{this.state.error}</p>}
+            <input
+                type="text"
+                className="text-input"
+                placeholder="description"
+                autoFocus
+                value={this.state.description}
+                onChange={this.onDescriptionChange}
+            />
+            <input
+                type="number"
+                className="text-input"
+                placeholder="Amount"
+                value={this.state.amount}
+                onChange={this.onAmountChange}
+            />
+            <SingleDatePicker 
+                date={this.state.createdAt}
+                onDateChange={this.onDateChange} 
+                focused={this.state.calendarFocused}
+                onFocusChange={this.onFocusChange}
+                numberOfMonths= {1}
+                isOutsideRange={() => false}
+                id={'3'}
+            />
+            <textarea
+            placeholder="Add a note for your expense (optional)"
+            value={this.state.note}
+            onChange = {this.onNoteChange}
+            >
+            </textarea>
             <div>
-            {this.state.error && <p>{this.state.error}</p>}
-                <form onSubmit={this.onSubmit}>
-                    <input
-                     type="text"
-                     placeholder="description"
-                     autoFocus
-                     value={this.state.description}
-                     onChange={this.onDescriptionChange}
-                    />
-                    <input
-                        type="number"
-                        placeholder="Amount"
-                        value={this.state.amount}
-                        onChange={this.onAmountChange}
-                    />
-                    <SingleDatePicker 
-                        date={this.state.createdAt}
-                        onDateChange={this.onDateChange} 
-                        focused={this.state.calendarFocused}
-                        onFocusChange={this.onFocusChange}
-                        numberOfMonths= {1}
-                        isOutsideRange={() => false}
-                        id={'3'}
-                    />
-                    <textarea
-                    placeholder="Add a note for your expense (optional)"
-                    value={this.state.note}
-                    onChange = {this.onNoteChange}
-                    >
-                    </textarea>
-                    <button>
-                    Save
-                    </button>
-                </form>
+            <button className="button">
+                Save
+            </button>
             </div>
+
+        </form>
+            
         );
     }
 }
